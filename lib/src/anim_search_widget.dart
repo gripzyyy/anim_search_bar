@@ -28,6 +28,7 @@ class AnimSearchBar extends StatefulWidget {
   final TextStyle? style;
   final bool closeSearchOnSuffixTap;
   final Color? color;
+  final Color? cursorColor;
   final List<TextInputFormatter>? inputFormatters;
 
   const AnimSearchBar({
@@ -63,6 +64,7 @@ class AnimSearchBar extends StatefulWidget {
 
     /// can add list of inputformatters to control the input
     this.inputFormatters,
+    this.cursorColor,
   }) : super(key: key);
 
   @override
@@ -205,6 +207,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                     focusNode: focusNode,
                     cursorRadius: Radius.circular(10.0),
                     cursorWidth: 2.0,
+                    cursorColor: widget.cursorColor,
                     onEditingComplete: () {
                       /// on editing complete the keyboard will be closed and the search bar will be closed
                       unfocusKeyboard();
@@ -217,7 +220,6 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                     style: widget.style != null
                         ? widget.style
                         : TextStyle(color: Colors.black),
-                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(bottom: 5),
                       isDense: true,
