@@ -23,6 +23,7 @@ class AnimSearchBar extends StatefulWidget {
   final String helpText;
   final int animationDurationInMilli;
   final onSuffixTap;
+  final onSubmitted;
   final bool rtl;
   final bool autoFocus;
   final TextStyle? style;
@@ -65,6 +66,7 @@ class AnimSearchBar extends StatefulWidget {
     /// can add list of inputformatters to control the input
     this.inputFormatters,
     this.cursorColor,
+    this.onSubmitted,
   }) : super(key: key);
 
   @override
@@ -203,6 +205,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                   child: TextField(
                     ///Text Controller. you can manipulate the text inside this textField by calling this controller.
                     controller: widget.textController,
+                    onSubmitted: widget.onSubmitted,
                     inputFormatters: widget.inputFormatters,
                     focusNode: focusNode,
                     cursorRadius: Radius.circular(10.0),
