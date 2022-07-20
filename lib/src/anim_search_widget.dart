@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
 class AnimSearchBar extends StatefulWidget {
@@ -88,7 +89,15 @@ class _AnimSearchBarState extends State<AnimSearchBar>
   @override
   void initState() {
     super.initState();
+
+    // Initialize the toggle to the parameter if it's not null
     toggle = widget.toggle ?? 1;
+    // If autofocus focus it too
+    if (toggle == 1 && widget.autoFocus) {
+      SchedulerBinding.instance.addPostFrameCallback((Duration _) {
+        FocusScope.of(context).requestFocus(focusNode);
+      });
+    }
 
     ///Initializing the animationController which is responsible for the expanding and shrinking of the search bar
     _con = AnimationController(
