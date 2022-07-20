@@ -26,6 +26,7 @@ class AnimSearchBar extends StatefulWidget {
   final onSubmitted;
   final bool rtl;
   final bool autoFocus;
+  final int? toggle;
   final TextStyle? style;
   final bool closeSearchOnSuffixTap;
   final Color? color;
@@ -67,6 +68,7 @@ class AnimSearchBar extends StatefulWidget {
     this.inputFormatters,
     this.cursorColor,
     this.onSubmitted,
+    this.toggle,
   }) : super(key: key);
 
   @override
@@ -75,7 +77,7 @@ class AnimSearchBar extends StatefulWidget {
 
 ///toggle - 0 => false or closed
 ///toggle 1 => true or open
-int toggle = 0;
+int toggle = 1;
 
 class _AnimSearchBarState extends State<AnimSearchBar>
     with SingleTickerProviderStateMixin {
@@ -86,6 +88,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
   @override
   void initState() {
     super.initState();
+    toggle = widget.toggle ?? 1;
 
     ///Initializing the animationController which is responsible for the expanding and shrinking of the search bar
     _con = AnimationController(
