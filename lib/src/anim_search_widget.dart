@@ -33,6 +33,7 @@ class AnimSearchBar extends StatefulWidget {
   final Color? color;
   final Color? cursorColor;
   final List<TextInputFormatter>? inputFormatters;
+  final String? hint;
 
   const AnimSearchBar({
     Key? key,
@@ -70,6 +71,7 @@ class AnimSearchBar extends StatefulWidget {
     this.cursorColor,
     this.onSubmitted,
     this.toggle,
+    this.hint,
   }) : super(key: key);
 
   @override
@@ -245,6 +247,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                         fontSize: 17.0,
                         fontWeight: FontWeight.w500,
                       ),
+                      hintText: widget.hint,
                       alignLabelWithHint: true,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
